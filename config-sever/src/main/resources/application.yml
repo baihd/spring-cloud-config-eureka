@@ -4,11 +4,10 @@ spring:
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/baihd/SpringCloudConfig.git    # 配置git仓库的地址
-          search-paths: config                             # git仓库地址下的相对地址，可以配置多个，用,分割。
-          username: baihd                                        # git仓库的账号
-          password: 1116810101bhd                                    # git仓库的密码
+        native:
+          search-locations: classpath:/shared
+  profiles:
+    active: native
   rabbitmq:
     host: 10.0.16.150
     port: 5672
@@ -24,5 +23,7 @@ eureka:
       defaultZone: http://localhost:8000/eureka/
 
 management:
-  security:
-    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

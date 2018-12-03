@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: spring-cloud-config-client
+  cloud:
+    bus:
+      trace:
+        #追踪所有此节点的RemoteApplicationEvent的各个子事件类型事件
+        enabled: true
+    config:
+      name: config-client
+      profile: dev
+      label: master
+      uri: http://localhost:8001
+  rabbitmq:
+    host: 10.0.16.150
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 8002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
